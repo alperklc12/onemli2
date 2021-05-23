@@ -16,4 +16,13 @@ with open("msg.txt", "r") as file:
     for line in file:
         print(line, end="")
 
+******* 
+
+try:
+    with open("msg1.txt", "r") as file:
+        for line in file:
+            print(line, end="")
+except FileNotFoundError as e:
+    print("File not found!", e)
+
 
