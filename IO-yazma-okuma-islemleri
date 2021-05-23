@@ -2,3 +2,14 @@ with open("msg.txt", "r") as file:
     data = file.read()
     data_lst = data.split("\n")
 print(data_lst[:-1])
+
+*******
+
+with open("msg.txt", "r") as file:
+    data = file.readlines()
+
+print(data)
+
+*******
+
+
