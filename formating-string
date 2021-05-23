@@ -1,2 +1,4 @@
 print("The first number:{:.2f}, {:f}, {:d},  {:4d},  {:03d}, {:,}".format(0.100000, 0.1, 1, 2, 3, 4000))
+print(f"The first number:{0.100000:.2f}, {0.1:f}, {1:d},  {2:4d},  {3:03d}, {40000:,}")
+print("The first number: %.2f, %f, %d,  %4d,  %03d" % (0.100000, 0.1, 1, 2, 3))
 # The first number:0.10, 0.100000, 1,     2,  003, 4,000
