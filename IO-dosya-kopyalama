@@ -1,0 +1,11 @@
+def file_copy(fl_source, fl_transmitted):
+    with open(fl_source, "r") as file:
+        data = file.readlines()
+
+    with open(fl_transmitted, "w", encoding="UTF-8") as file:
+        for line in data:
+            file.write(line)
+        # file.writelines(data)
+
+
+file_copy("msg01.txt", "msg02.txt")
