@@ -1,0 +1,41 @@
+def calculate_grades(line: str):
+    line = line.strip().split(":")
+
+    std_name = line[0]
+    std_grades = [int(e) for e in line[1].split(",")]
+    avrg = sum(std_grades) / len(std_grades)
+    return f"Name: {std_name.capitalize()} -> {avrg:.1f}"
+
+
+def take_average():
+    with open("data.txt", "r", encoding="UTF-8") as file:
+        for line in file:
+            print(calculate_grades(line))
+
+
+def add_grade():
+    name = input("Enter name: ")
+    grade1 = input("Enter grade1: ")
+    grade2 = input("Enter grade2: ")
+
+    with open("data.txt", "a", encoding="UTF-8") as file:
+        file.write(f"{name}:{grade1},{grade2}\n")
+
+
+def save_grade():
+    pass
+
+
+running = True
+while running:
+    operation = input("L]ist, A]dd, S]ave, E]xit")
+    if operation == "l":
+        take_average()
+    elif operation == "a":
+        add_grade()
+    elif operation == "s":
+        save_grade()
+    elif operation == "e":
+        running = False
+    else:
+        print("You entered wrong choice!")
