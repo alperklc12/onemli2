@@ -1,0 +1,8 @@
+import csv
+
+
+with open("student.csv", "w", newline="") as file:
+    header = ["name", "b_date"]
+    csv_writer = csv.DictWriter(file, header)
+    csv_writer.writeheader()
+    csv_writer.writerow({"name": "alper", "b_date": 1977})
