@@ -13,3 +13,59 @@ with open("student.csv", "r", newline="") as file:
     csv_dict = csv.DictReader(file)
     for line in csv_dict:
         print(line)
+        
+        
+ import csv
+
+
+def create_csv():
+    with open("student.csv", "w", encoding="utf-8", newline="") as file:
+        header = ["name", "location"]
+        csv_writer = csv.DictWriter(file, header)
+        csv_writer.writeheader()
+
+
+def add_user():
+    name = input("Enter your name")
+    location = input("Enter your location")
+    with open("student.csv", "a", encoding="utf-8", newline="") as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerow([name, location])
+
+
+def list_users():
+    with open("student.csv", "r", encoding="utf-8") as file:
+        csv_reader = csv.reader(file)
+        print("name, location")
+        print("--------------")
+        next(csv_reader)
+        for idx, line in enumerate(csv_reader, 1):
+            print(f"{idx}-{line[0]} -- {line[1]}")
+
+
+def get_user(name):
+    rusalt = -1
+    with open("student.csv", "r", encoding="utf-8") as file:
+        csv_reader = list(csv.reader(file))
+        for idx, line in enumerate(csv_reader):
+            if name == line[0]:
+                rusalt = idx
+    return rusalt
+
+
+running = True
+while running:
+    select = input("C)reate, A)dd, L)ist, G)et, Q)uit: ")
+    if select == "c":
+        create_csv()
+    elif select == "a":
+        add_user()
+    elif select == "l":
+        list_users()
+    elif select == "g":
+        name_ = input("Enter name")
+        rusalt_ = get_user(name_)
+        print(rusalt_)
+    elif select == "q":
+        running = False
+
