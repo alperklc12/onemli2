@@ -68,4 +68,46 @@ while running:
         print(rusalt_)
     elif select == "q":
         running = False
+   
+  
+  import csv
+
+
+def get_users():
+    with open("student.csv", "r", encoding="utf-8", newline="") as file:
+        csv_reader = csv.reader(file)
+        users = list(csv_reader)
+    return users
+
+
+def update_csv(name, new_name, new_location):
+    users = get_users()
+    with open("student.csv", "w", encoding="utf-8", newline="") as file:
+        csv_writer = csv.writer(file)
+        for line_ in users:
+            if line_[0] == name:
+                csv_writer.writerow([new_name, new_location])
+            else:
+                csv_writer.writerow(line_)
+
+
+def delete_csv(name):
+    users = get_users()
+    with open("student.csv", "w", encoding="utf-8", newline="") as file:
+        csv_writer = csv.writer(file)
+        for line_ in users:
+            if line_[0] == name:
+                continue
+            else:
+                csv_writer.writerow(line_)
+
+
+def show(lst):
+    for line in lst[1:]:
+        print(line)
+
+
+delete_csv("alper")
+rusalt = get_users()
+show(rusalt)
 
