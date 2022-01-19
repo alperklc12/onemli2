@@ -1,0 +1,14 @@
+class StudentCls:
+    lst = []
+
+    def __init__(self, name: str, number: int):
+        self.name = name
+        self.number = number
+        StudentCls.lst.append(self)  # onemli!!!
+
+    def __repr__(self):
+        return f"<{self.name}, {self.number}>"
+
+
+std1 = StudentCls("alper", 79)
+std2 = StudentCls("hasan", 55)
