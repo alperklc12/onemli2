@@ -1,0 +1,35 @@
+----------------------
+START = 2
+FINISH = 100
+SKIP_RANGE = range(20, 50)
+--------------------
+import md_constants as cnst
+
+def _is_prime_fn(num):
+    if num > 1:
+        for n in range(2, num):
+            if num % n != 0:
+                continue
+            else:
+                return False
+    return True
+
+
+def calc_primes_fn(start=1, finish=100):
+    primes = []
+    for n in range(start, finish):
+        if _is_prime_fn(n) and n not in cnst.SKIP_RANGE:
+            primes.append(n)
+    return primes
+    ---------------------
+import md_constants as cnst
+import md_helpers as hlp
+
+
+def run_fn():
+    primes = hlp.calc_primes_fn(start=cnst.START, finish=cnst.FINISH)
+    print(primes)
+
+
+if __name__ == '__main__':
+    run_fn()
