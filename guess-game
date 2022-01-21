@@ -1,0 +1,39 @@
+import random as rnd
+
+
+def human_guess_fn(end_issue):
+    rnd_number = rnd.randint(1, end_issue)
+
+    guess = 0
+    while guess != rnd_number:
+        guess = int(input("Guess a number between 1 and {}: ".format(end_issue)))
+        if guess < rnd_number:
+            print("Sorry, please guess again, Too low")
+        elif guess > rnd_number:
+            print("Sorry, please guess again, Too high")
+
+    print("congratulations you have guessed the number {}".format(rnd_number))
+
+
+def coumputer_guess_fn(end_issue, secret_num):
+    low = 1
+    high = end_issue
+    feedback = ""
+
+    while feedback != "c":
+        if low != high:
+            guess = rnd.randint(low, high)
+            feedback = input("{}? low [l], high [h], correct[c]: ".format(guess))
+            if feedback == "l":
+                low = guess + 1
+            elif feedback == "h":
+                high = guess - 1
+        else:
+            break
+
+        print(low, high)
+
+    print("congratulations you have guessed the number {}".format(secret_num))
+
+
+coumputer_guess_fn(100, 40)
