@@ -1,0 +1,111 @@
+SEPERATE = "--------------"
+
+
+class NodeCls:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+    def __repr__(self):
+        return f"{self.data}>"
+
+
+class LinkList:
+    def __init__(self):
+        self.head = None
+
+    def add_to_start_fn(self, data):
+        new_node = NodeCls(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+    def add_to_end_fn(self, data):
+        new_node = NodeCls(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    def add_items_fn(self, lst):
+        for e in lst:
+            self.add_to_end_fn(e)
+
+    def show_lst_fn(self):
+        if self.head is None:
+            print("List is empthy")
+            return
+        current = self.head
+        lst_string = ""
+        while current:
+            lst_string += str(current) + "-->"
+            current = current.next
+        return lst_string[:-3]
+
+    def length_of_lst_fn(self):
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+    def remove_fn(self, idx):
+        if idx < 0 or idx >= self.length_of_lst_fn():
+            raise Exception("Invalid index")
+        if idx == 0:
+            self.head = self.head.next
+            return
+
+        current = self.head
+        parent = None
+        count = 0
+        while current:
+            if idx == count:
+                parent.next = current.next
+                return
+            count += 1
+            parent = current
+            current = current.next
+
+    def insert_item(self, idx, data):
+        new_node = NodeCls(data)
+        lst_idx = self.length_of_lst_fn()
+        if idx < 0 or idx >= lst_idx:
+            raise Exception("Invalid index")
+
+        if idx == 0:
+            self.add_to_start_fn(data)
+            return
+        if idx == lst_idx - 1:
+            self.add_to_end_fn(data)
+            return
+
+        current = self.head
+        parent = None
+        count = 0
+
+        while current:
+            if idx == count:
+                parent.next = new_node
+                new_node.next = current
+                return
+            parent = current
+            current = current.next
+            count += 1
+
+
+my_lst = LinkList()
+current_lst = [10, 20, 30, 40, 50]
+my_lst.add_items_fn(current_lst)
+print(SEPERATE)
+my_lst.insert_item(2, "a")
+
+
+rusalt = my_lst.show_lst_fn()
+print(rusalt)
