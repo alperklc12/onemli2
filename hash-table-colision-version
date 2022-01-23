@@ -9,13 +9,21 @@ class HashMapCls:
             hs += ord(cr)
         return hs % self.MAX
 
+    # def __setitem__(self, key, value):
+    #     hs = self.create_hash_fn(key)
+    #     for elmement in self.arr[hs]:
+    #         if elmement[0] == key:
+    #             elmement[1] = value
+    #             return
+    #
+    #     self.arr[hs].append([key, value])
+
     def __setitem__(self, key, value):
         hs = self.create_hash_fn(key)
-        for idx, elmement in enumerate(self.arr[hs]):
-            if elmement[0] == key:
-                elmement[1] = value
+        for idx, element in enumerate(self.arr[hs]):
+            if element[0] == key:
+                self.arr[hs][idx] = ([key, value])
                 return
-
         self.arr[hs].append([key, value])
 
     def __getitem__(self, item):
@@ -48,5 +56,5 @@ print(my_hash["march 6"])
 print(my_hash["march 9"])
 print("------------")
 
-for e in my_hash.arr:
-    print(e)
+for e_ in my_hash.arr:
+    print(e_)
