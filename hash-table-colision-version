@@ -1,0 +1,52 @@
+class HashMapCls:
+    def __init__(self, max_):
+        self.MAX = max_
+        self.arr = [[] for _ in range(self.MAX)]
+
+    def create_hash_fn(self, key):
+        hs = 0
+        for cr in key:
+            hs += ord(cr)
+        return hs % self.MAX
+
+    def __setitem__(self, key, value):
+        hs = self.create_hash_fn(key)
+        for idx, elmement in enumerate(self.arr[hs]):
+            if elmement[0] == key:
+                elmement[1] = value
+                return
+
+        self.arr[hs].append([key, value])
+
+    def __getitem__(self, item):
+        hs = self.create_hash_fn(item)
+        if len(self.arr[hs]) == 1:
+            return self.arr[hs][0]
+        else:
+            for e in self.arr[hs]:
+                if e[0] == item:
+                    return e
+
+
+my_hash = HashMapCls(10)
+
+my_hash["march 6"] = 120
+my_hash["march 9"] = 78
+my_hash["march 17"] = 480
+my_hash["march 8"] = 67
+
+print(my_hash["march 6"])
+print(my_hash["march 9"])
+print(my_hash["march 17"])
+print(my_hash["march 8"])
+print("------------")
+
+my_hash["march 6"] = 345
+my_hash["march 9"] = 1000
+print(my_hash["march 8"])
+print(my_hash["march 6"])
+print(my_hash["march 9"])
+print("------------")
+
+for e in my_hash.arr:
+    print(e)
