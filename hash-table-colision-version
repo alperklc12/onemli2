@@ -35,6 +35,12 @@ class HashMapCls:
                 if e[0] == item:
                     return e
 
+    def __delitem__(self, key):
+        hs = self.create_hash_fn(key)
+        for idx, element in enumerate(self.arr[hs]):
+            if element[0] == key:
+                del self.arr[hs][idx]
+
 
 my_hash = HashMapCls(10)
 
@@ -56,5 +62,8 @@ print(my_hash["march 6"])
 print(my_hash["march 9"])
 print("------------")
 
+del my_hash["march 6"]
+del my_hash["march 17"]
+my_hash["march 17"] = 700
 for e_ in my_hash.arr:
     print(e_)
