@@ -1,0 +1,43 @@
+class HashTableCls:
+    def __init__(self, max_=100):
+        self.MAX = max_
+        self.arr = [None for _ in range(self.MAX)]
+    
+    def create_hash_fn(self, key):
+        hs = 0
+        for cr in key:
+            hs += ord(cr)
+        return hs % self.MAX
+
+    def set_item(self, key, val):
+        hs = self.create_hash_fn(key)
+        self.arr[hs] = val
+
+    def get_item(self, item):
+        hs = self.create_hash_fn(item)
+        return self.arr[hs]
+
+    def __setitem__(self, key, value):
+        hs = self.create_hash_fn(key)
+        self.arr[hs] = value
+
+    def __getitem__(self, item):
+        hs = self.create_hash_fn(item)
+        return self.arr[hs]
+
+    def __delitem__(self, key):
+        hs = self.create_hash_fn(key)
+        self.arr[hs] = None
+
+
+my_hash = HashTableCls()
+
+with open("stock_price.csv", "r") as fl:
+    for line in fl:
+        token = line.strip().split(";")
+        day = token[0]
+        price = token[1]
+        my_hash[day] = price
+
+for e in my_hash.arr:
+    print(e)
