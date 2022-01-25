@@ -1,0 +1,56 @@
+class TreeNodeCls:
+    def __init__(self, data):
+        self.data = data
+        self.cildren = []
+        self.parent = None
+
+    def __repr__(self):
+        return f"{self.data}"
+
+    def add_child(self, child):
+        self.cildren.append(child)
+        child.parent = self
+
+    def get_level(self):
+        level = 0
+        p = self.parent
+        while p:
+            p = p.parent
+            level += 1
+        return level
+
+    def list_tree(self):
+        space = self.get_level() * " " * 3
+        prefix = space + "|__" if self.parent else ""
+        print(prefix + str(self))
+        if self.cildren:
+            for e in self.cildren:
+                e.list_tree()
+
+
+def product_hiyerarchy():
+    root = TreeNodeCls("Electronics")
+    laptop = TreeNodeCls("Laptops")
+    phone = TreeNodeCls("CellPhones")
+    tv = TreeNodeCls("Tv")
+
+    laptop.add_child(TreeNodeCls("Macbook"))
+    laptop.add_child(TreeNodeCls("MS-Surface"))
+    laptop.add_child(TreeNodeCls("ThinkPad"))
+
+    phone.add_child(TreeNodeCls("IPhone"))
+    phone.add_child(TreeNodeCls("G-Pixel"))
+    phone.add_child(TreeNodeCls("Vivo"))
+
+    tv.add_child(TreeNodeCls("Samsung"))
+    tv.add_child(TreeNodeCls("LG"))
+
+    root.add_child(laptop)
+    root.add_child(phone)
+    root.add_child(tv)
+    return root
+
+
+if __name__ == "__main__":
+    my_tree = product_hiyerarchy()
+    my_tree.list_tree()
