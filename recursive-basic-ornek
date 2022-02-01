@@ -1,0 +1,12 @@
+lst_ = [6, 7, ["usa", ["german", "japan"]], ["alper", "hasan", ["eda", "tolga"]]]
+
+
+def open_lst(lst):
+    for e in lst:
+        if isinstance(e, list):
+            open_lst(e)
+        else:
+            print(e)
+
+
+open_lst(lst_)
