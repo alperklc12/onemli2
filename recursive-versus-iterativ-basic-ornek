@@ -1,0 +1,20 @@
+lst_ = [6, 7, ["usa", ["german", "japan"]], ["alper", "hasan", ["eda", "tolga"]]]
+
+
+def open_lst(lst):
+    for e in lst:
+        if isinstance(e, list):
+            open_lst(e)
+        else:
+            print(e)
+
+
+def open_lst_iterativ(lst):
+    stack = [lst]
+    while stack:
+        lst = stack.pop()
+        for e in lst:
+            if not isinstance(e, list):
+                print(e)
+            else:
+                stack.append(e)
