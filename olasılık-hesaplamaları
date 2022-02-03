@@ -1,0 +1,104 @@
+from random import randint, choice
+
+# a olayının olma olasılığı yüzde 15 olsun
+# b olayının olma olasılığı yüzde 30 olsun
+
+# a = randint(1, 100)
+# if a <= 15:
+#     print("olay gerçekleşti")
+# else:
+#     print("olay gerçekleşmedi")
+
+# lst = ["a", "b", "c", "d", "e"]
+# cho = choice(lst)
+
+
+# count = 0
+# for _ in range(10000):
+#     a = randint(1, 100)
+#     b = randint(1, 100)
+#     if a <= 15 and b <= 30:
+#         count += 1
+#
+# print("a ve b olayının birlikte bağımlı(and) bağımsız(or) olma olasılığı: {}".format((count*100)/10000))
+
+
+# y, heads = 0, 0
+# for _ in range(10000):
+#     a = randint(1, 2)
+#     if a == 1:
+#         y += 1
+#     elif a == 2:
+#         t += 1
+# print("Tail: ", (100*y)/10000)
+# print("Heads: ", (100*t)/10000)
+
+
+# money_posibility = ["y", "t"]
+# y, t = 0, 0
+# for _ in range(10000):
+#     rusalt = choice(money_posibility)
+#     if rusalt == "y":
+#         y += 1
+#     elif rusalt == "t":
+#         t += 1
+#
+# print("Tail: ", (100 * y) / 10000)
+# print("Heads: ", (100 * t) / 10000)
+
+# count = 0
+# for _ in range(10000):
+#     dice = randint(1, 6)
+#     if dice == 3 or dice == 6:
+#         count += 1
+#
+# print("t: ", (100 * count) / 10000)
+
+# count = 0
+# for _ in range(10000):
+#     dice1 = randint(1, 6)
+#     dice2 = randint(1, 6)
+#     if dice1 == 3 and dice2 == 6:
+#         count += 1
+#
+# print("Dice: ", (100 * count) / 10000)
+
+# count = 0
+# for _ in range(10000):
+#     dice1 = randint(1, 6)
+#     dice2 = randint(1, 6)
+#     sum_ = dice1 + dice2
+#     if sum_ == 12:
+#         count += 1
+#
+# print("Dice: ", (100 * count) / 10000)
+
+
+"""
+Soru1_
+Bir çantada 3 madeni para var. Bunlardan ikisi normal ve üçüncüsünün iki tarafı da yazı.
+Bir para rastgele seçiliyo ve 4 kez atılıyor. 
+4 defa da yazı gelirse bunun üçüncü para olma olasılığı nedir?
+"""
+
+# money1 = ["y", "t"]
+# money2 = ["y", "t"]
+# money3 = ["y", "y"]
+#
+# purse = [money1, money2, money3]
+#
+# a, b = 0, 0
+#
+# for _ in range(10000):
+#     money_chc = choice(purse)
+#     count = 0
+#     for __ in range(4):
+#         toss = choice(money_chc)
+#         if toss == "y":
+#             count += 1
+#     if count == 4:
+#         a += 1
+#         if money_chc == money3:
+#             b += 1
+#
+# print((100 * b) / a)
