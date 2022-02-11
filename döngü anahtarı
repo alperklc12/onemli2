@@ -3,3 +3,14 @@ while is_learning:
     print("You are learning!")
     user_input = input("Are you still learning?")
     is_learning = user_input == "yes"
+
+
+
+
+user_input = input("Do you wish run to program? (yes/no)")
+
+while user_input == "yes":
+    print("We are running")
+    user_input = input("Do you wish run to program? (yes/no)")
+
+print("We stopped running")
