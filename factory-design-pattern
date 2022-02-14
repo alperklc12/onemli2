@@ -1,0 +1,39 @@
+from abc import ABC, abstractmethod
+
+
+class IPerson(ABC):
+    """Interface class!"""
+
+    @abstractmethod
+    def person_method(self):
+        """ Interface method! """
+
+
+class Student(IPerson):
+    def __init__(self):
+        self.name = "Basic Student Name"
+
+    def person_method(self):
+        print("I am a student")
+
+
+class Teacher(IPerson):
+    def __init__(self):
+        self.name = "Basic Teacher Name"
+
+    def person_method(self):
+        print("I am a teacher")
+
+
+class PersonFactory:
+    @staticmethod
+    def creat_person(item):
+        person_dct = {"student": Student, "teacher": Teacher}
+        if item in person_dct:
+            return person_dct[item]()
+
+
+person1 = PersonFactory.creat_person("teacher")
+person2 = PersonFactory.creat_person("student")
+person1.person_method()
+person2.person_method()
