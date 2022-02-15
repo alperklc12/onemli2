@@ -1,0 +1,10 @@
+from typing import List, Dict, Union
+
+Dict[str, Union[str, int]]
+
+
+def func(item: str) -> List[Dict[str, Union[str, int]]]:
+    return [{"name": item, "no": 345}]
+
+
+print(func("alper"))
