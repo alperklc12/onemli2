@@ -1,0 +1,21 @@
+class Student:
+    __slots__ = 'name', 'school', 'marks'
+    
+    def __init__(self, name: str, school: str):
+        self.name = name
+        self.school = school
+        self.marks = []
+    
+    def avarage(self):
+        return sum(self.marks) / len(self.marks)
+
+
+class WorkingStudent(Student):
+    __slots__ = 'salary'
+    
+    def __init__(self, name: str, school: str, salary: int):
+        super().__init__(name, school)
+        self.salary = salary
+
+    def weekly_salary(self):
+        return self.salary * 40
