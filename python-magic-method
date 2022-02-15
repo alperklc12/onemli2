@@ -1,0 +1,17 @@
+class Garage:
+    def __init__(self):
+        self.cars = []
+
+    def __len__(self):
+        return len(self.cars)
+
+    def __getitem__(self, item):
+        return self.cars[item]
+
+
+ford = Garage()
+ford.cars.append("fiesta")
+ford.cars.append("focus")
+print(ford[0])  # Garage.__getitem__(ford, 0)
+for e in ford:
+    print(e)
