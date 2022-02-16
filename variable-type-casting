@@ -1,0 +1,15 @@
+my_int = 10000
+my_string = "alper"
+my_float = 23.5
+my_bool = True
+my_null = None
+my_list = [1, 2]
+my_tuple = (1, 3)
+my_set = {2, 6}
+my_dict = {"a": 1, "b": 2}
+
+print("Casting", type(int(5.4)))
+print("Casting", type(str(5.4)))
+print("Casting", type(chr(97)))
+print("Casting", type(ord("a")))
+print("Casting", type(float(5)))
