@@ -1,0 +1,23 @@
+books = []
+
+
+def add_book(name, author):
+    books.append({"name": name, "author": author, "read": False})
+
+
+def get_all_book():
+    return books
+
+
+def mark_book_as_read(name):
+    for book in books:
+        if name == book['name']:
+            book["read"] = True
+
+
+def delete_book(name):
+    idx = None
+    for idx, book in enumerate(books):
+        if name == book['name']:
+            break
+    del books[idx]
