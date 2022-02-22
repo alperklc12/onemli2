@@ -1,0 +1,32 @@
+def hundered_numbers():
+    count = 0
+    while count < 100:
+        count += 1
+        yield count
+
+
+class HunderedNums:
+    def __init__(self):
+        self.number = 0
+
+    def __next__(self):
+        if self.number < 100:
+            count = self.number
+            self.number += 1
+            return count
+        else:
+            raise StopIteration()
+
+    # def __iter__(self):
+    #     return self
+
+
+class HunderedIterable:
+    def __iter__(self):
+        return HunderedNums()
+
+
+num = HunderedIterable()
+
+for e in num:
+    print(e)
