@@ -1,0 +1,15 @@
+friends = ['rolf', 'randy', 'anna', "jose", 'mary']
+
+
+def find(a):
+    return a.startswith("r")
+
+
+def my_filter(func, itr):
+    for i in itr:
+        if func(i):
+            yield i
+
+
+rusalt = my_filter(find, friends)
+print(list(rusalt))
