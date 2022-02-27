@@ -1,0 +1,22 @@
+from typing import Union
+
+accounts = {'checking': 1956, 'saving': 3695}
+
+
+def add_balance(amount: Union[float, int], name: str = 'checking') -> Union[float, int]:
+    """
+        Update balance and return new balance
+    """
+    accounts[name] += amount
+    return accounts[name]
+
+
+def create_account(name: str, holder: str, account_holders: [str] = None) -> {}:
+    if not account_holders:
+        account_holders = list()
+    account_holders.append(holder)
+    return {'name': name, 'main_account_holder': holder, 'acccount_holders': account_holders}
+
+
+a1 = create_account('checking', 'rolf', [])
+a2 = create_account('saving', 'jen', [])
