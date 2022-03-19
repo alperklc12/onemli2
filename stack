@@ -1,3 +1,11 @@
+"""
+getSize()– Get the number of items in the stack.
+isEmpty() – Return True if the stack is empty, False otherwise.
+peek() – Return the top item in the stack. ...
+push(value) – Push a value into the head of the stack.
+"""
+
+
 class Stack:
     def __init__(self):
         self.arr = []
@@ -9,7 +17,7 @@ class Stack:
     def __len__(self):
         return len(self.arr)
 
-    def add(self, data: [int, str]):
+    def push(self, data: [int, str]):
         self.arr.append(data)
         self.length += 1
 
@@ -19,6 +27,9 @@ class Stack:
     def pop(self):
         self.length -= 1
         return self.arr.pop()
+    
+    def get_size(self):
+        return self.length
 
     def is_empthy(self):
         return True if len(self) <= 0 else False
