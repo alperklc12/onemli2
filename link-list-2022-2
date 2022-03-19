@@ -1,0 +1,115 @@
+class Node:
+    def __init__(self, data: int):
+        self.data = data
+        self.next = None
+
+    def __repr__(self):
+        return f'<{self.data}>'
+
+
+class LinkList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+    def __len__(self):
+        return self.length
+
+    def add_to_head(self, data: [int, str]):
+        new_node = Node(data)
+        if self.tail is None:
+            self.tail = new_node
+        new_node.next = self.head
+        self.head = new_node
+        self.length += 1
+
+    def add_to_end(self, data: [int, str]):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+            self.length += 1
+
+    def add_items(self, items: list, typ='end'):
+        if typ == 'end':
+            for e in items:
+                self.add_to_end(e)
+        elif typ == 'head':
+            for e in items:
+                self.add_to_head(e)
+
+    def insert(self, data: [int, str], idx: int):
+        new_node = Node(data)
+        current = self.head
+        prev = None
+        count = 1
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+            return
+
+        if 0 < idx < self.length:
+            while current.next and count <= idx:
+                count += 1
+                prev = current
+                current = current.next
+            new_node.next = current
+            prev.next = new_node
+            self.length += 1
+        else:
+            raise Exception('index error')
+
+    def delete_to_head(self):
+        if self.length > 0:
+            if self.length == 1:
+                self.head = None
+                self.tail = None
+                self.length -= 1
+            elif self.length > 1:
+                self.head = self.head.next
+                self.length -= 1
+
+    def delete_to_tail(self):
+        current = self.head
+        prev = None
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+            self.length -= 1
+        elif self.length > 1:
+            while current.next:
+                prev = current
+                current = current.next
+            print(prev, prev.next)
+            prev.next = None
+            self.tail = prev
+            self.length -= 1
+
+    def traverse(self):
+        current = self.head
+        while current:
+            print(current)
+            current = current.next
+
+    def search(self, key: [int, str]):
+        current = self.head
+        while current and key != current.data:
+            current = current.next
+        return current
+
+    def join(self, new_lst):
+        if new_lst.length > 0:
+            if self.head:
+                self.tail.next = new_lst.head
+                self.tail = new_lst.tail
+            else:
+                self.head = new_lst.head
+                self.tail = new_lst.tail
+                return
