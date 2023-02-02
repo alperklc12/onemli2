@@ -1,0 +1,32 @@
+import random
+
+option_lst = []
+used_lst = []
+spaces_lst = []
+
+row = 6
+columns = 8
+
+for piece in range(row * columns // 2):
+    option_lst.append(piece)
+
+# for _ in range(2):
+#     for item in option_lst:
+#         spaces_lst.append(item)
+#
+# print(spaces_lst)
+# random.shuffle(spaces_lst)
+# print(spaces_lst)
+
+for _ in range(row * columns):
+    if option_lst:
+        piece = option_lst[random.randint(0, len(option_lst) - 1)]
+        if piece in used_lst:
+            spaces_lst.append(piece)
+            option_lst.remove(piece)
+        else:
+            spaces_lst.append(piece)
+            used_lst.append(piece)
+
+print(spaces_lst)
+print(len(spaces_lst))
